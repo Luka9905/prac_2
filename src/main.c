@@ -9,22 +9,17 @@
 
 int main(int argc, char *argv[]) {
     int opt;
+    int show_users=0, show_pr=0, def=0;
     char *log_path = NULL;
     char *errors_path = NULL;
 
     while ((opt = getopt(argc, argv, "uphl:e:")) != -1) {
         switch (opt) {
             case 'u':
-                if (log_path) {
-                    log_to_file(log_path);
-                }
-                users();
+                show_users=1;
                 break;
             case 'p':
-                if (log_path) {
-                    log_to_file(log_path);
-                }
-                processes();
+                show_pr=1;
                 break;
             case 'h':
                 help();
@@ -41,6 +36,18 @@ int main(int argc, char *argv[]) {
                 help();
                 return 1;
         }
+    }
+
+    if (log_path) {
+        log_to_file(log_path);
+    }
+
+    if (show_users==1){
+        users();
+    }
+
+    if (show_pr==1){
+        processes();
     }
 
     return 0;
