@@ -4,7 +4,7 @@ project(pr2)
 set(CMAKE_C_STANDARD 99)
 
 # Указываем, где искать заголовочные файлы
-include_directories(include)
+include_directories(src)
 
 # Список исходных файлов
 set(SOURCES
